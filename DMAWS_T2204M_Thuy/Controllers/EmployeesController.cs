@@ -39,7 +39,7 @@ namespace DMAWS_T2204M_Thuy.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Employees.Add(new Project { EmployeeName = data.EmployeeName, EmployeeDOB = data.EmployeeDOB, EmployeeDepartment = data.EmployeeDepartment });
+                _context.Employees.Add(new Employee { EmployeeName = data.EmployeeName, EmployeeDOB = data.EmployeeDOB, EmployeeDepartment = data.EmployeeDepartment });
                 await _context.SaveChangesAsync();
                 return Ok("created");
             }
@@ -48,11 +48,11 @@ namespace DMAWS_T2204M_Thuy.Controllers
 
         // PUT api/<CategoryController>/5
         [HttpPut, Route("update")]
-        async public Task<IActionResult> Update(Project data)
+        async public Task<IActionResult> Update(Employee data)
         {
             if (ModelState.IsValid)
             {
-                _context.Projects.Update(data);
+                _context.Employees.Update(data);
                 await _context.SaveChangesAsync();
                 return NoContent();
             }
@@ -63,10 +63,10 @@ namespace DMAWS_T2204M_Thuy.Controllers
         [HttpDelete, Route("delete")]
         async public Task<IActionResult> Delete(int id)
         {
-            var a = _context.Projects.Find(id);
+            var a = _context.Employees.Find(id);
             if (a != null)
             {
-                _context.Projects.Remove(a);
+                _context.Employees.Remove(a);
                 await _context.SaveChangesAsync();
                 return NoContent();
             }
